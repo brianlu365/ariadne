@@ -1,7 +1,5 @@
 var five = require("johnny-five"), 
-  board = new five.Board({
-    port: "/dev/ttyACM0"
-  });
+  board = new five.Board();
 
 board.on("ready",function(){
   this.repl.inject({
