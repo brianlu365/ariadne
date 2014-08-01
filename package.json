@@ -1,0 +1,7 @@
+{
+  "name": "ariadne",
+  "dependencies": {
+    "johnny-five": "*"
+  }
+
+}
