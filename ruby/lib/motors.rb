@@ -25,7 +25,7 @@ class Motors
     right_spd = spd
   end
 
-  def right
+  def right(spd)
     set_dir 0, 1
     right_spd = 0
     left_spd = spd
