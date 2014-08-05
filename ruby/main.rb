@@ -14,13 +14,13 @@ stat = true
 loop do
   puts stat
   astar.digital_write 13, stat
-  astar.digital_write 8, stat
+  astar.digital_write 7, stat
   0.upto(200) do |i|
-    astar.analog_write 10, i
+    astar.analog_write 9, i
     sleep 0.1
   end
   200.upto(0) do |i|
-    astar.analog_write 10, i
+    astar.analog_write 9, i
     sleep 0.1
   end
   stat = !stat
