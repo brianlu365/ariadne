@@ -3,10 +3,10 @@ class Motors
   def initialize(uc, left_motor_pwm_pin, left_motor_dir_pin, right_motor_pwm_pin, right_motor_dir_pin)
     @uc = uc
     @l_pwm_p, @l_dir_p, @r_pwm_p, @r_dir_p = left_motor_pwm_pin, left_motor_dir_pin, right_motor_pwm_pin, right_motor_dir_pin
-    @left_spd = 0
-    @right_spd = 0
-    @left_dir = 0
-    @right_dir = 1
+    self.left_spd = 0
+    self.right_spd = 0
+    self.left_dir = 0
+    self.right_dir = 1
   end
 
   def forward(l_spd, r_spd)
@@ -66,12 +66,12 @@ class Motors
   end
 
   def set_speed(l_spd, r_spd)
-    left_spd = l_spd
-    right_spd = r_spd
+    self.left_spd = l_spd
+    self.right_spd = r_spd
   end
 
   def set_dir(l_dir, r_dir)
-    left_dir = l_dir
-    right_dir = r_dir
+    self.left_dir = l_dir
+    self.right_dir = r_dir
   end
 end
