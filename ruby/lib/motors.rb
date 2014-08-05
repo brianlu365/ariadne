@@ -1,8 +1,8 @@
 class Motors
-  # attr_accessor :left_dir, :right_dir, :left_spd, :right_spd
-  def initialize(uc, left_motor_pwm_pin, left_motor_dir_pin, right_motor_pwm_pin, right_motor_dir_pin)
-    @uc = uc
-    @l_pwm_p, @l_dir_p, @r_pwm_p, @r_dir_p = left_motor_pwm_pin, left_motor_dir_pin, right_motor_pwm_pin, right_motor_dir_pin
+  attr_reader :left_dir, :right_dir, :left_spd, :right_spd
+  def initialize(args)
+    @uc = args[:uc]
+    @l_pwm_p, @l_dir_p, @r_pwm_p, @r_dir_p = args[:left_motor_pwm_pin], args[:left_motor_dir_pin], args[:right_motor_pwm_pin], args[:right_motor_dir_pin]
     self.left_spd = 0
     self.right_spd = 0
     self.left_dir = 0
@@ -47,22 +47,22 @@ class Motors
 
   def left_dir=(dir)
     @uc.digital_write @l_dir_p, dir
-    self.left_dir = dir
+    @left_dir = dir
   end
 
   def right_dir=(dir)
     @uc.digital_write @r_dir_p, dir
-    self.right_dir = dir
+    @right_dir = dir
   end
 
   def left_spd=(spd)
     @uc.analog_write @l_pwm_p, spd
-    self.left_spd = spd
+    @left_spd = spd
   end
 
   def right_spd=(spd)
     @uc.analog_write @r_pwm_p, spd
-    self.right_spd = spd
+    @right_spd = spd
   end
 
   def set_speed(l_spd, r_spd)

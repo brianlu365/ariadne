@@ -1,5 +1,8 @@
+# require 'motors'
+# require 'arduino_firmata'
+
 # describe Motors do
-#   let(:m) {left_dir: 1, left_dir}
+#   @m = Motors.new()
 #   it 'go forward' do
 
 #   end
