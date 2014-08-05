@@ -56,12 +56,12 @@ class Motors
   end
 
   def left_spd=(spd)
-    @uc.analog_write @l_spd_p, spd
+    @uc.analog_write @l_pwm_p, spd
     @left_spd = spd
   end
 
   def right_spd=(spd)
-    @uc.analog_write @r_spd_p, spd
+    @uc.analog_write @r_pwm_p, spd
     @right_spd = spd
   end
 
