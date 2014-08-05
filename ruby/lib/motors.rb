@@ -45,33 +45,33 @@ class Motors
     set_speed 0, 0
   end
 
-  def left_dir=(dir)
-    @uc.digital_write @l_dir_p, dir
-    @left_dir = dir
-  end
+  # def left_dir=(dir)
+  #   @uc.digital_write @l_dir_p, dir
+  #   @left_dir = dir
+  # end
 
-  def right_dir=(dir)
-    @uc.digital_write @r_dir_p, dir
-    @right_dir = dir
-  end
+  # def right_dir=(dir)
+  #   @uc.digital_write @r_dir_p, dir
+  #   @right_dir = dir
+  # end
 
-  def left_spd=(spd)
-    @uc.analog_write @l_pwm_p, spd
-    @left_spd = spd
-  end
+  # def left_spd=(spd)
+  #   @uc.analog_write @l_pwm_p, spd
+  #   @left_spd = spd
+  # end
 
-  def right_spd=(spd)
-    @uc.analog_write @r_pwm_p, spd
-    @right_spd = spd
-  end
+  # def right_spd=(spd)
+  #   @uc.analog_write @r_pwm_p, spd
+  #   @right_spd = spd
+  # end
 
   def set_speed(l_spd, r_spd)
-    left_spd = l_spd
-    right_spd = r_spd
+    @uc.analog_write @l_pwm_p, l_spd
+    @uc.analog_write @r_pwm_p, r_spd
   end
 
   def set_dir(l_dir, r_dir)
-    left_dir = l_dir
-    right_dir = r_dir
+    @uc.digital_write @l_dir_p, l_dir
+    @uc.digital_write @r_dir_p, r_dir
   end
 end
