@@ -21,22 +21,22 @@ m = Motors.new(astar, 9, 7, 10, 8)
 m.forward 100, 100
 sleep 1
 
-m.break
-sleep 0.2
+# m.break
+# sleep 0.2
 
-m.reverse 100, 100
-sleep 1
+# m.reverse 100, 100
+# sleep 1
 
-m.break
-sleep 0.2
+# m.break
+# sleep 0.2
 
-m.left 100
-sleep 1
+# m.left 100
+# sleep 1
 
-m.break
-sleep 0.2
+# m.break
+# sleep 0.2
 
-m.right 100
-sleep 1
+# m.right 100
+# sleep 1
 
-m.break
+# m.break
