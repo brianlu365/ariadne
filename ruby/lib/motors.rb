@@ -1,5 +1,5 @@
 class Motors
-  attr_accessor :left_dir, :right_dir, :left_spd, :right_spd
+  # attr_accessor :left_dir, :right_dir, :left_spd, :right_spd
   def initialize(uc, left_motor_pwm_pin, left_motor_dir_pin, right_motor_pwm_pin, right_motor_dir_pin)
     @uc = uc
     @l_pwm_p, @l_dir_p, @r_pwm_p, @r_dir_p = left_motor_pwm_pin, left_motor_dir_pin, right_motor_pwm_pin, right_motor_dir_pin
