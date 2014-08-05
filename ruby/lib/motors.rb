@@ -21,14 +21,14 @@ class Motors
 
   def left(spd)
     set_dir 0, 1
-    left_spd = 0
-    right_spd = spd
+    self.left_spd = 0
+    self.right_spd = spd
   end
 
   def right(spd)
     set_dir 0, 1
-    right_spd = 0
-    left_spd = spd
+    self.right_spd = 0
+    self.left_spd = spd
   end
 
   def rotate_left(spd)
