@@ -34,7 +34,12 @@ r = Robot.new(uc: astar,
               encoder: e,
               qtr: q)
 
-sleep 0.2
+sleep 0.1
+astar.on :digital_read do |pin, status|
+  if [2,3,4,5].include? pin
+    puts "digital pin #{pin} changed : #{status}"
+  end
+end
 until (q.deadend? || q.intersection?) do
   r.follow_segment
   sleep 0.01
