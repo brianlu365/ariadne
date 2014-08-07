@@ -20,13 +20,13 @@ class Motors
   end
 
   def left(spd)
-    set_dir 0, 1
-    self.left_spd = 0
+    set_dir 1, 1
+    self.left_spd = spd / 2
     self.right_spd = spd
   end
 
   def right(spd)
-    set_dir 0, 1
+    set_dir 0, 0
     self.right_spd = 0
     self.left_spd = spd
   end

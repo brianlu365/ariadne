@@ -71,6 +71,14 @@ class Qtr
     @last_position = avg/sum
   end
   
+  def above_line(sensor)
+    if vals_cali[sensor] > 450
+      return true 
+    else
+      return false
+    end
+  end
+
   def deadend?
     vals = vals_cali
     vals.map! {|v| v < 200}

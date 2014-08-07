@@ -8,7 +8,7 @@ require "motors"
 require "encoder"
 require "robot"
 
-astar = ArduinoFirmata.connect ARGV.shift
+astar = ArduinoFirmata.connect ARGV.shift, non_block_io: false
 puts "firmata version #{astar.version}"
 
 q = Qtr.new(uc: astar, 
@@ -35,14 +35,19 @@ r = Robot.new(uc: astar,
               qtr: q)
 
 sleep 0.1
-astar.on :digital_read do |pin, status|
-  if [2,3,4,5].include? pin
-    puts "digital pin #{pin} changed : #{status}"
-  end
-end
-until (q.deadend? || q.intersection?) do
-  r.follow_segment
-  sleep 0.01
-end
+r.follow_segment
+# sleep 0.02
+# until !q.above_line(2) do
+#   puts q.vals_cali.to_s + q.position.to_s + "phase 1"
+#   r.turn(:left)
+#   sleep 0.01
+# end
+# until q.above_line(2) do
+#   puts q.vals_cali.to_s + q.position.to_s + "phase 2"
+#   r.turn(:left)
+#   sleep 0.01
+# end
+# r.follow_segment
+
 r.stop
 astar.close
