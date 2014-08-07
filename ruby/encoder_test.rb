@@ -4,7 +4,7 @@ require "rubygems"
 require "arduino_firmata"
 require "encoder"
 
-astar = ArduinoFirmata.connect ARGV.shift, nonblock_io: true, eventmachine: true
+astar = ArduinoFirmata.connect ARGV.shift
 puts "firmata version #{astar.version}"
 
 astar.pin_mode 13, ArduinoFirmata::OUTPUT

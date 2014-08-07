@@ -8,7 +8,7 @@ class Qtr
     @f_3_p = args[:front_3_pin]
     @cali_min = [32, 40, 40, 40, 32]
     @cali_max = [960, 920, 920, 920, 960]
-    @last_position = 0
+    @last_position = 1000
   end
 
   def l
@@ -61,15 +61,39 @@ class Qtr
     end
 
     unless online
-      if @last_value < 1000
+      if @last_position < 1000
         return 0
       else
         return 2000
       end
     end
 
-    @last_value = avg/sum
+    @last_position = avg/sum
   end
+  
+  def deadend?
+    vals = vals_cali
+    vals.map! {|v| v < 200}
+    if vals[0] && vals[1] && vals[2] && vals[3] && vals[4]
+      puts "deadend? true"
+      return true
+    else
+      puts "deadend? false"
+      return false
+    end
+  end
+
+  def intersection?
+    vals = vals_cali
+    if vals[0] > 200 || vals[4] > 200
+      puts "intersection? true"
+      return true
+    else
+      puts "intersection? false"
+      return false
+    end
+  end
+
 
   private
   def limit(x, a, b)

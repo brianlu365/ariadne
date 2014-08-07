@@ -9,14 +9,14 @@ class Motors
     self.right_dir = 1
   end
 
-  def forward(l_spd, r_spd)
+  def forward(spd)
     set_dir 0, 1
-    set_speed l_spd, r_spd
+    set_speed spd, spd
   end
 
-  def reverse(l_spd, r_spd)
+  def reverse(spd)
     set_dir 1, 0
-    set_speed l_spd, r_spd
+    set_speed spd, spd
   end
 
   def left(spd)
@@ -42,6 +42,7 @@ class Motors
   end
 
   def break
+    puts "break"
     set_speed 0, 0
   end
 
@@ -66,7 +67,7 @@ class Motors
   end
 
   def set_speed(l_spd, r_spd)
-    self.left_spd = l_spd
+    self.left_spd = l_spd 
     self.right_spd = r_spd
   end
 

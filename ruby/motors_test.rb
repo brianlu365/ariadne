@@ -20,7 +20,7 @@ m = Motors.new(uc: astar,
                right_motor_pwm_pin: 10,
                right_motor_dir_pin: 8)
 0.upto 200 do |i|
-  m.forward i, i
+  m.forward i
   sleep 0.1
 end
 sleep 1
@@ -28,7 +28,7 @@ sleep 1
 m.break
 sleep 0.2
 
-m.reverse 100, 100
+m.reverse 100
 sleep 1
 
 m.break
