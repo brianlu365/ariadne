@@ -18,9 +18,10 @@ e = Encoder.new(uc: astar,
                 left_motor_encoder_b: 5,
                 right_motor_encoder_a: 3,
                 right_motor_encoder_b: 2)
-
+counter = 0
 astar.on :digital_read do |pin, status|
-  puts "digital pin #{pin} changed : #{status}"
+  counter += 1
+  puts "#{counter}: digital pin #{pin} changed : #{status}"
 end
 
 led_stat = false
