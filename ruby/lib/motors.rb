@@ -43,7 +43,8 @@ class Motors
 
   def break
     puts "break"
-    set_speed 0, 0
+    @uc.digital_write @l_pwm_p, 0
+    @uc.digital_write @r_pwm_p, 0
   end
 
   def left_dir=(dir)
@@ -57,6 +58,7 @@ class Motors
   end
 
   def left_spd=(spd)
+    # spd = spd + 5
     @uc.analog_write @l_pwm_p, spd
     @left_spd = spd
   end

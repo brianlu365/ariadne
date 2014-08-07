@@ -8,7 +8,7 @@ require "motors"
 require "encoder"
 require "robot"
 
-astar = ArduinoFirmata.connect ARGV.shift, :nonblock_io => true
+astar = ArduinoFirmata.connect ARGV.shift
 puts "firmata version #{astar.version}"
 
 q = Qtr.new(uc: astar, 
@@ -34,10 +34,10 @@ r = Robot.new(uc: astar,
               encoder: e,
               qtr: q)
 
-
-r.go
-# r.follow_segment
-sleep 0.5
+sleep 0.2
+until (q.deadend? || q.intersection?) do
+  r.follow_segment
+  sleep 0.01
+end
 r.stop
-m.break
 astar.close
