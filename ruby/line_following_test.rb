@@ -13,10 +13,10 @@ puts "firmata version #{astar.version}"
 
 q = Qtr.new(uc: astar, 
             left_pin: 0,
-            right_pin: 1,
-            front_1_pin: 2,
-            front_2_pin: 3,
-            front_3_pin: 4)
+            front_1_pin: 1,
+            front_2_pin: 2,
+            front_3_pin: 3,
+            right_pin: 4)
 m = Motors.new(uc: astar,
                left_motor_pwm_pin: 9,
                left_motor_dir_pin: 7,

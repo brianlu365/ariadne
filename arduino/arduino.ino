@@ -316,7 +316,34 @@ void reportDigitalCallback(byte port, int value)
   // scanning digital pins, portConfigInputs will mask off values from any
   // pins configured as analog
 }
-=
+
+void enableI2CPins()
+{
+  byte i;
+  // is there a faster way to do this? would probaby require importing 
+  // Arduino.h to get SCL and SDA pins
+  for (i=0; i < TOTAL_PINS; i++) {
+    if(IS_PIN_I2C(i)) {
+      // mark pins as i2c so they are ignore in non i2c data requests
+      setPinModeCallback(i, I2C);
+    } 
+  }
+   
+  isI2CEnabled = true; 
+  
+  // is there enough time before the first I2C request to call this here?
+  Wire.begin();
+}
+
+/* disable the i2c pins so they can be used for other functions */
+void disableI2CPins() {
+    isI2CEnabled = false;
+    // disable read continuous mode for all devices
+    queryIndex = -1;
+    // uncomment the following if or when the end() method is added to Wire library
+    // Wire.end();
+}
+
 /*==============================================================================
  * SYSEX-BASED commands
  *============================================================================*/
@@ -391,7 +418,7 @@ void sysexCallback(byte command, byte argc, byte *argv)
       query[queryIndex].bytes = argv[4] + (argv[5] << 7);
       break;
     case I2C_STOP_READING:
-	  byte queryIndexToSkip;      
+    byte queryIndexToSkip;      
       // if read continuous mode is enabled for only 1 i2c device, disable
       // read continuous reporting for that device
       if (queryIndex <= 0) {
@@ -504,9 +531,9 @@ void sysexCallback(byte command, byte argc, byte *argv)
       Serial.write(pin);
       if (pin < TOTAL_PINS) {
         Serial.write((byte)pinConfig[pin]);
-	Serial.write((byte)pinState[pin] & 0x7F);
-	if (pinState[pin] & 0xFF80) Serial.write((byte)(pinState[pin] >> 7) & 0x7F);
-	if (pinState[pin] & 0xC000) Serial.write((byte)(pinState[pin] >> 14) & 0x7F);
+  Serial.write((byte)pinState[pin] & 0x7F);
+  if (pinState[pin] & 0xFF80) Serial.write((byte)(pinState[pin] >> 7) & 0x7F);
+  if (pinState[pin] & 0xC000) Serial.write((byte)(pinState[pin] >> 14) & 0x7F);
       }
       Serial.write(END_SYSEX);
     }
@@ -520,33 +547,6 @@ void sysexCallback(byte command, byte argc, byte *argv)
     Serial.write(END_SYSEX);
     break;
   }
-}
-
-void enableI2CPins()
-{
-  byte i;
-  // is there a faster way to do this? would probaby require importing 
-  // Arduino.h to get SCL and SDA pins
-  for (i=0; i < TOTAL_PINS; i++) {
-    if(IS_PIN_I2C(i)) {
-      // mark pins as i2c so they are ignore in non i2c data requests
-      setPinModeCallback(i, I2C);
-    } 
-  }
-   
-  isI2CEnabled = true; 
-  
-  // is there enough time before the first I2C request to call this here?
-  Wire.begin();
-}
-
-/* disable the i2c pins so they can be used for other functions */
-void disableI2CPins() {
-    isI2CEnabled = false;
-    // disable read continuous mode for all devices
-    queryIndex = -1;
-    // uncomment the following if or when the end() method is added to Wire library
-    // Wire.end();
 }
 
 /*==============================================================================
@@ -604,6 +604,9 @@ void setup()
 
   Firmata.begin(57600);
   systemResetCallback();  // reset to default config
+
+  Motors::setup(8, 7);
+  
 }
 
 /*==============================================================================
