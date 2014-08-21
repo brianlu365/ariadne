@@ -42,7 +42,6 @@ class Motors
   end
 
   def break
-    puts "break"
     @uc.digital_write @l_pwm_p, 0
     @uc.digital_write @r_pwm_p, 0
   end
