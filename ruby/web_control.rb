@@ -2,18 +2,15 @@
 $:.unshift File.expand_path './lib', File.dirname(__FILE__)
 require "rubygems"
 require "arduino_firmata"
-require "eventmachine"
-require "qtr"
 require "motors"
-require "encoder"
-require "robot"
 require 'sinatra'
 require 'sinatra-websocket'
 require 'haml'
 
 
 
-
+set :bind, '0.0.0.0'
+set :port, 5678
 set :server, 'thin'
 set :sockets, []
 
