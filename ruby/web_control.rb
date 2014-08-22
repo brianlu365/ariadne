@@ -46,12 +46,12 @@ get '/' do
           m.break
           msg = "went #{msg}"
         when 'left'
-          m.rotate_left(100)
+          m.rotate_left(15)
           sleep 0.5
           m.break
           msg = "turned #{msg}"
         when 'right'
-          m.rotate_right(100)
+          m.rotate_right(15)
           sleep 0.5
           m.break
           msg = "turned #{msg}"
