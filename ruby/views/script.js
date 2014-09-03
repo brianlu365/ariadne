@@ -276,6 +276,6 @@ function init() {
   mjpeg_img.onerror = error_img;
   reload_img();
   // status
-  // reload_ajax("");
+  reload_ajax("");
 
 }

@@ -1,16 +1,18 @@
 !!!
 %html
   %head
-    %link{:href => "http://cdn.foundation5.zurb.com/foundation.min.css", :rel => "stylesheet"}
+    %link{:href => "http://yui.yahooapis.com/pure/0.5.0/pure-min.css", :rel => "stylesheet"}
+    %link{:href => "http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css", :rel => "stylesheet"}
+    
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %script{:src => "script.js"}
   %body{onload: "setTimeout('init();', 100);"}
     %h1 Control robot movement with buttons below. ip address: <10.10.10.154:5678>
-    .row
-      %div
+    .pure-g
+      .pure-u-1
         %img#mjpeg_dest
-    .row
-      .small-4.large-4.columns
+    .pure-g
+      .pure-u-1-2
         %table
           %tr{style: 'text-align: center;'}
             %td{colspan: 2} 
@@ -23,7 +25,7 @@
           %tr{style: 'text-align: center;'}
             %td{colspan:2}
               %button#backward{type: 'button', value: 'backward', onclick: "sendmsg('backward')"} backward
-      .small-8.large-8.columns
+      .pure-u-1-2
         #msgs
 
   :javascript
