@@ -9,21 +9,23 @@
     %h1 Control robot movement with buttons below. ip address: <10.10.10.154:5678>
     .row
       %div
-        %img#mjpeg_dest/
-    %table
-      %tr{style: 'text-align: center;'}
-        %td{colspan: 2} 
-          %button#forward{type: 'button', value: 'forward', onclick: "sendmsg('forward')"} forward
-      %tr
-        %td{style: 'text-align: center;'}
-          %button#left{type: 'button', value: 'left', onclick: "sendmsg('left')"} turn left
-        %td{style: 'text-align: center;'}
-          %button#right{type: 'button', value: 'right', onclick: "sendmsg('right')"} turn right
-      %tr{style: 'text-align: center;'}
-        %td{colspan:2}
-          %button#backward{type: 'button', value: 'backward', onclick: "sendmsg('backward')"} backward
-    %br
-    #msgs
+        %img#mjpeg_dest
+    .row
+      .small-4.columns
+        %table
+          %tr{style: 'text-align: center;'}
+            %td{colspan: 2} 
+              %button#forward{type: 'button', value: 'forward', onclick: "sendmsg('forward')"} forward
+          %tr
+            %td{style: 'text-align: center;'}
+              %button#left{type: 'button', value: 'left', onclick: "sendmsg('left')"} turn left
+            %td{style: 'text-align: center;'}
+              %button#right{type: 'button', value: 'right', onclick: "sendmsg('right')"} turn right
+          %tr{style: 'text-align: center;'}
+            %td{colspan:2}
+              %button#backward{type: 'button', value: 'backward', onclick: "sendmsg('backward')"} backward
+      .small-8.columns
+        #msgs
 
   :javascript
     var ws;
