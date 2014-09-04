@@ -37,27 +37,21 @@ get '/' do
         case msg
         when 'forward'
           m.forward(100)
-          sleep 0.5
-          m.break
           msg = "went #{msg}"
         when 'backward'
           m.reverse(100)
-          sleep 0.5
-          m.break
           msg = "went #{msg}"
         when 'left'
-          m.rotate_left(50)
-          sleep 0.5
-          m.break
+          m.rotate_left(100)
           msg = "turned #{msg}"
         when 'right'
-          m.rotate_right(50)
-          sleep 0.5
-          m.break
+          m.rotate_right(100)
           msg = "turned #{msg}"
+        when 'break'
+          m.break
         end
 
-        EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
+        # EM.next_tick { settings.sockets.each{|s| s.send(msg) } }
       end
 
       ws.onclose do
