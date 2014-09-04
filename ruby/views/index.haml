@@ -10,7 +10,8 @@
     %h2 ip address: <10.10.10.154:5678>
     .pure-g
       .pure-u-1
-        %img#mjpeg_dest
+        %img.pure-img#mjpeg_dest
+    %br
     .pure-g
       .pure-u-1.pure-u-md-1-2
         %table
@@ -31,7 +32,7 @@
   :javascript
     var ws;
     window.onload = function(){
-      init();
+      setTimeout('init();', 100);
       (function(){
         var show = function(el){
           return function(msg){ el.innerHTML = msg + '<br />' + el.innerHTML; }
