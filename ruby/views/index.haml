@@ -10,11 +10,11 @@
     %h2{style: 'text-align: center;'} ip address: <10.10.10.154:5678>
     .pure-g
       .pure-u-1
-        %img.pure-img#mjpeg_dest
+        %img.pure-img#mjpeg_dest{style: "margin-left: auto;margin-right: auto;"}
     %br
     .pure-g
       .pure-u-1.pure-u-md-1-2
-        %table
+        %table{style: "margin-left: auto;margin-right: auto;"}
           %tr{style: 'text-align: center;'}
             %td{colspan: 2} 
               %button#forward{type: 'button', value: 'forward', onclick: "sendmsg('forward')"} forward
@@ -27,7 +27,7 @@
             %td{colspan:2}
               %button#backward{type: 'button', value: 'backward', onclick: "sendmsg('backward')"} backward
       .pure-u-1.pure-u-md-1-2
-        #msgs
+        #msgs{style: "margin-left: auto;margin-right: auto;"}
 
   :javascript
     var ws;
