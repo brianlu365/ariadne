@@ -15,7 +15,7 @@ set :server, 'thin'
 set :sockets, []
 
 get '/' do
-  astar = ArduinoFirmata.connect ARGV.shift
+  astar = ArduinoFirmata.connect ARGV.shift, nonblock_io: false
   puts "firmata version #{astar.version}"
 
   m = Motors.new(uc: astar,
