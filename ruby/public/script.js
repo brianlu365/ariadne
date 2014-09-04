@@ -58,7 +58,7 @@ function reload_img () {
 }
 
 function error_img () {
-  setTimeout("mjpeg_img.src = 'cam_pic.php?time=' + new Date().getTime();", 100);
+  setTimeout("mjpeg_img.src = 'http://10.10.10.154/cam_pic.php?time=' + new Date().getTime();", 100);
 }
 
 //
