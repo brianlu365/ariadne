@@ -68,7 +68,7 @@ class Motors
   end
 
   def set_speed(l_spd, r_spd)
-    self.left_spd = l_spd 
+    self.left_spd = l_spd * 1.2 
     self.right_spd = r_spd
   end
 
