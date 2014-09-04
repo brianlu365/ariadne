@@ -6,13 +6,13 @@
     
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %script{:src => "script.js"}
-  %body{onload: "setTimeout('init();', 100);"}
-    %h1 Control robot movement with buttons below. ip address: <10.10.10.154:5678>
+  %body
+    %h2 ip address: <10.10.10.154:5678>
     .pure-g
       .pure-u-1
         %img#mjpeg_dest
     .pure-g
-      .pure-u-1-2
+      .pure-u-1.pure-u-md-1-2
         %table
           %tr{style: 'text-align: center;'}
             %td{colspan: 2} 
@@ -25,12 +25,13 @@
           %tr{style: 'text-align: center;'}
             %td{colspan:2}
               %button#backward{type: 'button', value: 'backward', onclick: "sendmsg('backward')"} backward
-      .pure-u-1-2
+      .pure-u-1.pure-u-md-1-2
         #msgs
 
   :javascript
     var ws;
     window.onload = function(){
+      init();
       (function(){
         var show = function(el){
           return function(msg){ el.innerHTML = msg + '<br />' + el.innerHTML; }
