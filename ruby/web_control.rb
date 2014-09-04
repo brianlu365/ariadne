@@ -15,7 +15,7 @@ set :server, 'thin'
 set :sockets, []
 
 get '/' do
-  astar = ArduinoFirmata.connect ARGV.shift, nonblock_io: false
+  astar = ArduinoFirmata.connect ARGV.shift
   puts "firmata version #{astar.version}"
 
   m = Motors.new(uc: astar,
@@ -37,16 +37,16 @@ get '/' do
         case msg
         when 'forward'
           m.forward(100)
-          msg = "went #{msg}"
+          # msg = "went #{msg}"
         when 'backward'
           m.reverse(100)
-          msg = "went #{msg}"
+          # msg = "went #{msg}"
         when 'left'
           m.rotate_left(100)
-          msg = "turned #{msg}"
+          # msg = "turned #{msg}"
         when 'right'
           m.rotate_right(100)
-          msg = "turned #{msg}"
+          # msg = "turned #{msg}"
         when 'break'
           m.break
         end

@@ -6,6 +6,7 @@
     
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}
     %script{:src => "script.js"}
+    %script{:src => "//code.jquery.com/jquery-1.11.0.min.js"}
   %body{style: "margin-left: auto; max-width: 900px; margin-right: auto;"}
     %h2{style: 'text-align: center;'} ip address: <10.10.10.154:5678>
     .pure-g
@@ -45,7 +46,43 @@
 
       })();
     }
+    
     function sendmsg(m){
       ws.send(m);
       return false;
     };
+
+    $(document.body).keydown(function (evt) {
+      switch(evt.keycode) {
+        case 87:
+          sendmsg('forward');
+          break;
+
+        case 83:
+          sendmsg('backward');
+          break;
+
+        case 65:
+          sendmsg('left');
+          break;
+
+        case 68:
+          sendmsg('right');
+          break;
+
+        default:
+      }
+    });
+
+    $(document.body).keyup(function (evt) {
+      switch(evt.keycode) {
+        case 87:
+        case 83:
+        case 65:
+        case 68:
+          sendmsg('break');
+          break;
+        default:
+
+      }
+    });
