@@ -42,10 +42,10 @@ get '/' do
           m.reverse(100)
           # msg = "went #{msg}"
         when 'left'
-          m.rotate_left(100)
+          m.rotate_left(80)
           # msg = "turned #{msg}"
         when 'right'
-          m.rotate_right(100)
+          m.rotate_right(80)
           # msg = "turned #{msg}"
         when 'break'
           m.break
