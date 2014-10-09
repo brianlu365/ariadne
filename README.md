@@ -1,1 +1,4 @@
-#Ariadne Maze Solver
+#Raspberry Pi robot
+
+* FPV video streaming
+* control from browser
