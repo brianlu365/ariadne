@@ -49,5 +49,5 @@ r.follow_segment
 # end
 # r.follow_segment
 
-r.stop
+# r.stop
 astar.close
