@@ -21,7 +21,7 @@ class Robot
     until (@qtr.deadend?) do
       position = @qtr.position
       offset_from_center = position - 1000
-      power_difference = offset_from_center / 70
+      power_difference = offset_from_center / 50
 
       if power_difference > @speed || power_difference < -@speed
         power_difference = @speed
