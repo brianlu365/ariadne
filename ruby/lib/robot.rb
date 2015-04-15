@@ -4,7 +4,7 @@ class Robot
     @motors = args[:motors]
     @encoder = args[:encoder]
     @qtr = args[:qtr]
-    @speed = 30
+    @speed = 20
   end
 
   def go
@@ -21,7 +21,7 @@ class Robot
     until (@qtr.deadend?) do
       position = @qtr.position
       offset_from_center = position - 1000
-      power_difference = offset_from_center / 40
+      power_difference = offset_from_center / 80
 
       if power_difference > @speed || power_difference < -@speed
         power_difference = @speed
