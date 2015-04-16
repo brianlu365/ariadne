@@ -27,7 +27,7 @@ class Robot
 
       left_spd, right_spd = (@speed + power_difference), (@speed - power_difference)
 
-      # puts "pos: #{position}, ofc: #{error}, pd: #{power_difference}"
+      puts "pos: #{position}, ofc: #{error}, left_spd: #{left_spd}, right_spd: #{right_spd}"
 
       if left_spd < 0
         left_spd = 0
