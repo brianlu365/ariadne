@@ -36,7 +36,7 @@ class Robot
         # puts "adjust to left, #{@speed}, #{@speed - power_difference}"
         @motors.set_speed @speed, (@speed - power_difference)
       end
-      sleep 0.02
+      # sleep 0.02
     end
   end
 
