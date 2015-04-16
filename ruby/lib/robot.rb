@@ -25,7 +25,7 @@ class Robot
       power_difference = error/20+(error - last_error)*2
       last_error = error
 
-      left_spd, right_spd = (@speed + power_difference), (-@speed - power_difference)
+      left_spd, right_spd = (@speed + power_difference), (@speed - power_difference)
 
       # puts "pos: #{position}, ofc: #{error}, pd: #{power_difference}"
 
@@ -33,8 +33,8 @@ class Robot
         left_spd = @speed
       end
 
-      if right_spd > -@speed
-        right_spd = -@speed
+      if right_spd > @speed
+        right_spd = @speed
       end
 
       @motors.set_speed left_spd, right_spd
