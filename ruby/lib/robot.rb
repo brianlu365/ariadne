@@ -4,7 +4,7 @@ class Robot
     @motors = args[:motors]
     @encoder = args[:encoder]
     @qtr = args[:qtr]
-    @speed = 30
+    @speed = 100
   end
 
   def go
@@ -18,29 +18,36 @@ class Robot
   end
 
   def follow_segment
-    last_offset_from_center = 0
-    until (false) do
-      position = @qtr.position
+    last_error = 0
 
-      offset_from_center = position - 1000
-      derivative = offset_from_center - last_offset_from_center
-      last_offset_from_center = offset_from_center
+    until (gets.chomp == 's') do
+      error = @qtr.position - 1000
+      power_difference = error/4+(error - last_error)*6
+      last_error = error
 
-      power_difference = offset_from_center/20+derivative/10
 
-      if power_difference > @speed || power_difference < -@speed
-        power_difference = @speed
+      left_spd = @speed + power_difference
+      right_spd = @speed - power_difference
+
+      # puts "pos: #{position}, ofc: #{error}, pd: #{power_difference}"
+
+      if left_spd < 0
+        left_spd = 0
       end
 
-      puts "pos: #{position}, ofc: #{offset_from_center}, pd: #{power_difference}"
-
-      if offset_from_center > 0
-        # puts "adjust to right, #{@speed + power_difference}, #{@speed}"
-        @motors.set_speed (@speed + power_difference), @speed
-      else
-        # puts "adjust to left, #{@speed}, #{@speed - power_difference}"
-        @motors.set_speed @speed, (@speed - power_difference)
+      if right_spd < 0
+        right_spd = 0
       end
+
+      if left_spd > @speed
+        left_spd = @speed
+      end
+
+      if right_spd > @speed
+        right_spd = @speed
+      end
+
+      @motors.set_speed left_spd, right_spd
       sleep 0.01
     end
   end
