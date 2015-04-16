@@ -4,7 +4,7 @@ class Robot
     @motors = args[:motors]
     @encoder = args[:encoder]
     @qtr = args[:qtr]
-    @speed = 20
+    @speed = 30
   end
 
   def go
@@ -26,7 +26,7 @@ class Robot
       derivative = offset_from_center - last_offset_from_center
       last_offset_from_center = offset_from_center
 
-      power_difference = offset_from_center/30+derivative/10
+      power_difference = offset_from_center/10+derivative/30
 
       if power_difference > @speed || power_difference < -@speed
         power_difference = @speed
