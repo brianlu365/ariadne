@@ -20,7 +20,7 @@ class Robot
   def follow_segment
     last_error = 0
 
-    until (gets.chomp == 's') do
+    until (false) do
       error = @qtr.position - 1000
       power_difference = error/20+(error - last_error)*2
       last_error = error
