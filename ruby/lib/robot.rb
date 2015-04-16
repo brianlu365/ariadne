@@ -18,10 +18,15 @@ class Robot
   end
 
   def follow_segment
+    last_offset_from_center = 0
     until (false) do
       position = @qtr.position
+
       offset_from_center = position - 1000
-      power_difference = offset_from_center / 20
+      derivative = offset_from_center - last_offset_from_center
+      last_offset_from_center = offset_from_center
+
+      power_difference = offset_from_center/4 + derivative*18
 
       if power_difference > @speed || power_difference < -@speed
         power_difference = @speed
