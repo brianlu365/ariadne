@@ -25,19 +25,15 @@ class Robot
       power_difference = error/20+(error - last_error)*2
       last_error = error
 
+      left_spd, right_spd = @speed, @speed
 
-      left_spd = @speed + power_difference
-      right_spd = @speed - power_difference
+      if error > 0
+        left_spd += power_difference
+      else
+        right_spd += power_difference
+      end
 
       # puts "pos: #{position}, ofc: #{error}, pd: #{power_difference}"
-
-      if left_spd < 0
-        left_spd = 0
-      end
-
-      if right_spd < 0
-        right_spd = 0
-      end
 
       if left_spd > @speed
         left_spd = @speed
