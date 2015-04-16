@@ -29,6 +29,14 @@ class Robot
 
       # puts "pos: #{position}, ofc: #{error}, pd: #{power_difference}"
 
+      if left_spd < 0
+        left_spd = 0
+      end
+
+      if right_spd < 0
+        right_spd = 0
+      end
+
       if left_spd > @speed
         left_spd = @speed
       end
