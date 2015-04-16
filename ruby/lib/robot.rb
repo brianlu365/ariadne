@@ -4,7 +4,7 @@ class Robot
     @motors = args[:motors]
     @encoder = args[:encoder]
     @qtr = args[:qtr]
-    @speed = 30
+    @speed = 20
   end
 
   def go
@@ -26,13 +26,13 @@ class Robot
       derivative = offset_from_center - last_offset_from_center
       last_offset_from_center = offset_from_center
 
-      power_difference = offset_from_center/20 + derivative*5
+      power_difference = offset_from_center/30+derivative/10
 
       if power_difference > @speed || power_difference < -@speed
         power_difference = @speed
       end
 
-      # puts "pos: #{position}, ofc: #{offset_from_center}, pd: #{power_difference}"
+      puts "pos: #{position}, ofc: #{offset_from_center}, pd: #{power_difference}"
 
       if offset_from_center > 0
         # puts "adjust to right, #{@speed + power_difference}, #{@speed}"
