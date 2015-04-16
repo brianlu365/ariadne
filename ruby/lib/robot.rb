@@ -4,7 +4,7 @@ class Robot
     @motors = args[:motors]
     @encoder = args[:encoder]
     @qtr = args[:qtr]
-    @speed = 30
+    @speed = 100
   end
 
   def go
@@ -23,7 +23,7 @@ class Robot
     until (false) do
       position = @qtr.position
       error = position - 1000
-      power_difference = error/20+(error - last_error)*2
+      power_difference = error/5+(error - last_error)/2
       last_error = error
 
       left_spd, right_spd = (@speed + power_difference), (@speed - power_difference)
