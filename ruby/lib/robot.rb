@@ -21,7 +21,7 @@ class Robot
     until (false) do
       position = @qtr.position
       offset_from_center = position - 1000
-      power_difference = offset_from_center / 50
+      power_difference = offset_from_center / 20
 
       if power_difference > @speed || power_difference < -@speed
         power_difference = @speed
@@ -36,7 +36,7 @@ class Robot
         # puts "adjust to left, #{@speed}, #{@speed - power_difference}"
         @motors.set_speed @speed, (@speed - power_difference)
       end
-      sleep 0.01
+      sleep 0.02
     end
   end
 
