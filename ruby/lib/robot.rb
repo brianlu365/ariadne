@@ -4,7 +4,7 @@ class Robot
     @motors = args[:motors]
     @encoder = args[:encoder]
     @qtr = args[:qtr]
-    @speed = 100
+    @speed = 30
   end
 
   def go
