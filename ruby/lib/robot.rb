@@ -19,15 +19,14 @@ class Robot
 
   def follow_segment
     last_error = 0
-
     until (false) do
       position = @qtr.position
       error = position - 1000
-      power_difference = error/5+(error - last_error)/2
+      power_difference = error/10+(error - last_error)/3
       last_error = error
 
-      left_spd, right_spd = (@speed + power_difference), (@speed - power_difference)
-
+      left_spd = @speed + power_difference
+      right_spd = @speed - power_difference
 
       if left_spd < 0
         left_spd = 0
@@ -46,6 +45,7 @@ class Robot
       end
       puts "pos: #{position}, ofc: #{error}, left_spd: #{left_spd}, right_spd: #{right_spd}"
 
+      @motors.set_dir 0, 1 
       @motors.set_speed left_spd, right_spd
       sleep 0.01
     end
